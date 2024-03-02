@@ -7,7 +7,7 @@
 		"indentWidth": 2,
 		"lineWidth": 110,
 		"semiColons": true,
-		"singleQuote": false
+		"singleQuote": true
 	},
 	"publish": {
 		"exclude": [".vscode/"]
