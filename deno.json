@@ -1,0 +1,12 @@
+{
+	"name": "@mary/reader",
+	"version": "0.1.0",
+	"exports": "./mod.ts",
+	"fmt": {
+		"useTabs": true,
+		"indentWidth": 2,
+		"lineWidth": 110,
+		"semiColons": true,
+		"singleQuote": false
+	}
+}
