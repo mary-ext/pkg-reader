@@ -8,5 +8,8 @@
 		"lineWidth": 110,
 		"semiColons": true,
 		"singleQuote": false
+	},
+	"publish": {
+		"exclude": [".vscode/"]
 	}
 }
