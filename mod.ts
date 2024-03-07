@@ -63,7 +63,7 @@ export function createIterableReader(iterable: AsyncIterable<Uint8Array>): Reade
 				unwritten -= length;
 				size -= length;
 
-				if (ptr >= buffer.length) {
+				if (ptr >= buffer.byteLength) {
 					if (pages.length < 1) {
 						break;
 					}
