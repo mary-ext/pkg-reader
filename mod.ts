@@ -107,6 +107,40 @@ export function createIterableReader(iterable: AsyncIterable<Uint8Array>): Reade
 }
 
 /**
+ * Creates a reader from a Uint8Array
+ */
+export function createUint8Reader(uint8: Uint8Array): Reader {
+	const size = uint8.length;
+	let read = 0;
+
+	return {
+		// deno-lint-ignore require-await
+		async read(p) {
+			const remaining = size - read;
+
+			if (remaining <= 0) {
+				return null;
+			}
+
+			if (p.byteLength <= remaining) {
+				p.set(uint8.subarray(read, read += p.byteLength));
+				return p.byteLength;
+			}
+
+			p.set(uint8.subarray(read, read += remaining));
+			return remaining;
+		},
+		// deno-lint-ignore require-await
+		async seek(n) {
+			const remaining = size - read;
+			read += n <= remaining ? n : remaining;
+
+			return read;
+		},
+	};
+}
+
+/**
  * Creates an async iterable from a ReadableStream
  */
 export async function* createStreamIterable<T>(
